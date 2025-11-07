@@ -1,0 +1,67 @@
+﻿@page
+@model RazorSalesApp.Pages.EditModel
+
+@{
+    ViewData["Title"] = "Edit Sale";
+}
+
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2 class="text-primary fw-bold">
+            <i class="bi bi-pencil-square"></i> Edit Sale
+        </h2>
+        <a asp-page="./Index" class="btn btn-outline-secondary">
+            <i class="bi bi-arrow-left-circle"></i> Back to List
+        </a>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-sm border-0 rounded-3">
+                <div class="card-body">
+                    <form method="post">
+                        <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+                        <input type="hidden" asp-for="Sales.Id" />
+
+                        <div class="mb-3">
+                            <label asp-for="Sales.ProductName" class="form-label fw-semibold"></label>
+                            <input asp-for="Sales.ProductName" class="form-control" />
+                            <span asp-validation-for="Sales.ProductName" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Sales.Quantity" class="form-label fw-semibold"></label>
+                            <input asp-for="Sales.Quantity" class="form-control" />
+                            <span asp-validation-for="Sales.Quantity" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Sales.Price" class="form-label fw-semibold"></label>
+                            <input asp-for="Sales.Price" class="form-control" />
+                            <span asp-validation-for="Sales.Price" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Sales.SalesDate" class="form-label fw-semibold"></label>
+                            <input asp-for="Sales.SalesDate" class="form-control" type="date" />
+                            <span asp-validation-for="Sales.SalesDate" class="text-danger"></span>
+                        </div>
+
+                        <div class="d-flex justify-content-between mt-4">
+                            <input type="submit" value="Save Changes" class="btn btn-primary px-4" />
+                            <a asp-page="./Index" class="btn btn-outline-danger">
+                                <i class="bi bi-x-circle"></i> Cancel
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
